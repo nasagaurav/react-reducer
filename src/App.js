@@ -2,13 +2,20 @@ import React, { useReducer } from 'react';
 
 const intialState = { x: 0 };
 function reducer(state = intialState, action) {
-  console.log(action);
-  if (action.type === '+') return { x: state.x + 1 };
-  if (action.type === '-') return { x: state.x - 1 };
-  if (action.type === '0') return { x: 0 };
-  if (action.type === 'thousand') return { x: 1000 };
-  if (action.type === '2k') return { x: 2000 };
-  return state;
+  switch (action.type) {
+    case '+':
+      return { x: state.x + 1 };
+    case '-':
+      return { x: state.x - 1 };
+    case '0':
+      return { x: 0 };
+    case 'thousand':
+      return { x: 1000 };
+    case '2k':
+      return { x: 2000 };
+    default:
+      return state;
+  }
 }
 
 export default function App() {
